@@ -59,6 +59,7 @@ if __name__ == "__main__":
     fn = run_all_gather
     world_size = 4
     processes = []
+    # Question: fork/spawn? Code example to show the difference?
     mp.set_start_method("spawn")
     for rank in range(world_size):
         p = mp.Process(target=init_process, args=(rank, world_size, fn))
