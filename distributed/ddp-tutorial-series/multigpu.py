@@ -84,6 +84,8 @@ def prepare_dataloader(dataset: Dataset, batch_size: int):
 
 
 def main(rank: int, world_size: int, save_every: int, total_epochs: int, batch_size: int):
+    print(f"Running on {rank} of {world_size}")
+    
     ddp_setup(rank, world_size)
     dataset, model, optimizer = load_train_objs()
     train_data = prepare_dataloader(dataset, batch_size)
